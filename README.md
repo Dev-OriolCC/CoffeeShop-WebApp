@@ -11,3 +11,4 @@ This application will have functionality from the client side and admin.
 
 * **Oriol Cortez Cesar** - *Full work* - [Dev-OriolCC](https://github.com/Dev-OriolCC)
 
+## Screenshots and gifs 📸
