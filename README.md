@@ -1,4 +1,4 @@
-# Proyecto CoffeeShop
+# Project CoffeeShop
 This is a E-Commerce Web Application for a fiction Coffee Shop named Oriol's Coffee. 🙂😎
 This application will have functionality from the client side and admin.
 
@@ -7,7 +7,7 @@ This application will have functionality from the client side and admin.
 * [PHP](https://www.php.net) - Backend Programming Language.
 * [Bootstrap](https://getbootstrap.com) - Frontend styling framework.
 
-## Autores ✒️
+## Authors ✒️
 
 * **Oriol Cortez Cesar** - *Full work* - [Dev-OriolCC](https://github.com/Dev-OriolCC)
 
