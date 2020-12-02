@@ -1,13 +1,12 @@
 <?php
     include_once "./include/bootstrapLinks.php"; // Call the BS files we need
-
-
+    
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Oriol's Coffee</a>
+  <a class="navbar-brand" href="#" style="color: #28A745;">Oriol's Coffee</a>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
@@ -28,6 +27,14 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <?php
+        $id = '';
+            if ($id >0) {
+        ?>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Welcome Oriol!</a>
+        </li>
+        <?php   }   ?>
         <li class="nav-item">
             <a class="nav-link" href="#">Profile</a>
         </li>
