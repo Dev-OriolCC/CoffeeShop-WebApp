@@ -254,8 +254,8 @@
 
                         <p><a href="mailto:info@domain.com" title="glorythemes">cesaroriolcortezz@gmail.com</a></p>
                         <ul class="social-footer2">
-                            <li class=""><a title="youtube" target="_blank" href="https://www.youtube.com/"><img alt="youtube" width="30" height="30" src=""></a></li>
-                            <li class=""><a href="https://www.facebook.com/" target="_blank" title="Facebook"><img alt="Facebook" width="30" height="30" src=""></a></li>
+                            <li class=""><a title="github" target="_blank" href="https://github.com/Dev-OriolCC"><img alt="github" width="30" height="30" src="https://image.flaticon.com/icons/png/512/25/25231.png"></a></li>
+                            <li class=""><a href="https://t.me/OriolCC" target="_blank" title="telegram"><img alt="telegram" width="30" height="30" src="https://cdn0.iconfinder.com/data/icons/social-network-24/512/Telegram-512.png"></a></li>
                         </ul>
                     </div>
                 </div>
