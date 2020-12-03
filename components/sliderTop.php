@@ -6,13 +6,13 @@
         class="imgContainer ml-lg-n5 mt-lg-0 mt-md-0 ml-md-n5 mt-n5"
       >
         <div class="image">
-          <img src="1.png" />
+          <img src="img/mocha.png" />
         </div>
         <div class="image">
-          <img src="2.png" />
+          <img src="img/express.png" />
         </div>
         <div class="image">
-          <img src="3.png" />
+          <img src="img/latte.png" />
         </div>
       </div>
     </div>
@@ -27,21 +27,17 @@
           <div class="carousel-item active">
             <div class="content">
               <div class="title">
-                Coffee Lattee
+                Coffee Latte
               </div>
               <div class="desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Error itaque, libero dignissimos nihil aliquam
-                eveniet tenetur cupiditate consectetur quod modi
-                repellendus veniam, repellat iusto fugiat temporibus
-                officia facere nulla nam.
+              Caffe latte is a coffee drink made with espresso and steamed milk. The word comes from the Italian caffè e latte, caffelatte or caffellatte, which means "coffee and milk".
               </div>
               <div
                 class="d-flex justify-content-center justify-content-lg-start"
               >
-                <button class="btn readMoreBtn">
+                <button class="btn readMoreBtn"><a href="#" style="color: white;">
                   Read More
-                </button>
+                </a></button>
               </div>
             </div>
           </div>
@@ -51,39 +47,33 @@
                 Coffee Express
               </div>
               <div class="desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Error itaque, libero dignissimos nihil aliquam
-                eveniet tenetur cupiditate consectetur quod modi
-                repellendus veniam, repellat iusto fugiat temporibus
-                officia facere nulla nam.
+              Espresso coffee is a form of coffee preparation originating in Italy, it owes its term to obtaining
+              this drink through an espresso machine, characterized by its quick preparation and a more concentrated flavor and texture.
               </div>
               <div
                 class="d-flex justify-content-center justify-content-lg-start"
               >
-                <button class="btn readMoreBtn">
+                <button class="btn readMoreBtn"><a href="#" style="color: white;">
                   Read More
-                </button>
+                </a></button>
               </div>
             </div>
           </div>
           <div class="carousel-item">
             <div class="content">
               <div class="title">
-                Coffee Moka
+                Coffee Mocha
               </div>
               <div class="desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Error itaque, libero dignissimos nihil aliquam
-                eveniet tenetur cupiditate consectetur quod modi
-                repellendus veniam, repellat iusto fugiat temporibus
-                officia facere nulla nam.
+              A mocha coffee is a variant of coffee with milk. Like this one, it usually has a third of espresso and two-thirds of steamed milk, 
+              but a part of chocolate is added, usually in the form of chocolate syrup, although some machines use instant chocolate powder.
               </div>
               <div
                 class="d-flex justify-content-center justify-content-lg-start"
               >
-                <button class="btn readMoreBtn">
+                <button class="btn readMoreBtn"><a href="#" style="color: white;">
                   Read More
-                </button>
+                </a></button>
               </div>
             </div>
           </div>
