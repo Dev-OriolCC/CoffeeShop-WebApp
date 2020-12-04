@@ -27,13 +27,35 @@ include_once 'css/footerStyle.css';
     <?php include_once 'components/sliderTop.php';
     ?>
     <script src="js/script.js"></script>
+    <!-- SEE MORE -->
+    <div class="row">
+        <div class="col-12">
+            <h4>Discover our full menu of coffee</h4>
+            <a href="pages/menu.php">Go to Menu</a>
+        </div>
+    </div>
+
     <!-- INFORMATION & GOOGLE MAP -->
     <div class="row">
         <div class="col-md-6 col-12">
-            <p class="ml-5" >HELLO WORLD</p>
+            <p class="ml-4"><b>About Oriol's Coffee</b><br>
+            <div class="row">
+                <div class="col-6">
+                    <p class="ml-4" style="text-align: justify;">
+                        Starbucks Corporation is an American multinational chain of coffeehouses and roastery reserves headquartered in Seattle, Washington. As the world's largest
+                        coffeehouse chain, Starbucks is seen to be the main representation of the United States' second wave of coffee culture. 
+                    </p>
+                </div>
+                <div class="col-5 mx-auto">
+                    <img src="https://thehalalinvestor.co.uk/wp-content/uploads/2020/07/man_5-512.png"
+                    style="border: 2px solid black; border-radius: 50%;" width="150" height="150">
+                    <p><b>Walter Hartwell White</b> <br> -Founder of Oriol's Coffee</p>
+                </div>
+                </p>
+            </div>
         </div>
         <div class="col-md-6 col-12">
-            <p>GOOGLE MAP</p>
+            <p><b>Our Location 🌎🚩</b></p>
             <div class="map-responsive">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1001.1156971838826!2d-88.38955412278675!3d18.677022387739758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5bb1399bb9a5ad%3A0x68459b3cd0c64df8!2zWsOzY2Fsbw!5e0!3m2!1ses!2smx!4v1606964787652!5m2!1ses!2smx" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
@@ -53,16 +75,8 @@ include_once 'css/footerStyle.css';
                 }
             </style>
         </div>
-            
-
-    </div>
-
+    </div> <!-- END OF INFORMATION & LOCATION -->
 </body>
-
-<p>Hello world</p>
-
-
 <!-- FOOTER -->
 <?php include_once 'components/footer.php'; ?>
-
 </html>
