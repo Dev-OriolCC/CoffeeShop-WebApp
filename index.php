@@ -29,11 +29,11 @@ include_once 'css/footerStyle.css';
     <script src="js/script.js"></script>
     <!-- SEE MORE -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" align="center">
             <h4>Discover our full menu of coffee</h4>
-            <a href="pages/menu.php">Go to Menu</a>
+            <a href="menu.php"><button class="btn btn-dark">Go to Menu</button></a>
         </div>
-    </div>
+    </div><br>
 
     <!-- INFORMATION & GOOGLE MAP -->
     <div class="row">
