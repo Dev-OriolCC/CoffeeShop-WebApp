@@ -1,0 +1,13 @@
+html,
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+main{
+    /*THIS MAKES A COOL RESPONSIVE BACKGROUND  */
+    background-image: url("../img/bgLogin.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
