@@ -22,7 +22,7 @@
         <!-- LOGIN -->
         <div style="display: block;" id="loginForm">
             <div class="row">
-                <form method="POST" action="" class="bg-dark mx-auto col-8 col-sm-4">
+                <form method="POST" action="" class="bg-dark mx-auto col-8 col-sm-4 mt-5">
                     <div class="form-group">
                         <p class="text-white">Email/Username: </p>
                         <input type="text" class="form-control" name="Username" placeholder="Example@gmail.com" required>
@@ -32,7 +32,7 @@
                         <input type="password" class="form-control" name="UserPassword"  required>
                     </div>
                     <div align="center">
-                        <button class="btn btn-success">Login</button>
+                        <button type="submit" class="btn btn-success" name="NewLogin">Login</button>
                     </div>
                 </form>
             </div>
@@ -53,14 +53,14 @@
         <!-- REGISTER -->
         <div style="display: none;" id="registerUser">
             <div class="row">
-                <form action="" method="POST" class="bg-dark mx-auto col-8 col-sm-4">
+                <form action="" method="POST" class="bg-dark mx-auto col-8 col-sm-4 mt-5"">
                     <div class="form-group">
                         <p class="text-white">Email: </p>
                         <input type="email" class="form-control" name="email" placeholder="example@gmail.com" required>
                     </div>
                     <div class="form-group">
                         <p class="text-white">Username: </p>
-                        <input type="text" class="form-control" name="Username" required>
+                        <input type="text" class="form-control" name="username" required>
                     </div>
                     <div class="form-group">
                         <p class="text-white">Password: </p>
@@ -71,7 +71,7 @@
                         <input type="password" class="form-control" name="password_2" required>
                     </div>
                     <div align="center">
-                        <button class="btn btn-success">Register</button>
+                        <button type="submit" class="btn btn-success" name="NewUser">Register</button>
                     </div>
                 </form>
             </div>
@@ -80,6 +80,7 @@
             <h4 id="login" class="text-white" style="display: none;">Login</h4>
         </div>
         <script>
+
             var password = document.getElementById("password"), confirm_password = document.getElementById("password_2");
                 function validatePassword(){
                     if(password.value != confirm_password.value) {
@@ -98,8 +99,59 @@
             }
           password.onchange = validatePassword;
           confirm_password.onkeyup = validatePassword;
-
         </script>
+        <?php   // CODE FOR REGISTER
+            if(isset($_POST['NewUser'])){
+                /*
+                $user_1 = $_POST['username'];
+                if (strlen($user_1 <= 8)) {
+                    $ERROR = '<p>Username is too Short!!</p>';
+                } else{ */ 
+                    // Securtiy
+                    $Email = mysqli_real_escape_string($connection, $_POST['email']);
+                    $Username = mysqli_real_escape_string($connection, $_POST['username']);
+                    $Password = mysqli_real_escape_string($connection, $_POST['password']);
+                    // Generate KEY
+                    $timeStr = time();
+                    $Key = password_hash($timeStr, PASSWORD_BCRYPT);
+
+                    //Hash Password Security GOD Level
+                    $Password_Hashed = password_hash($Password, PASSWORD_BCRYPT);
+                    // Verify if not registered already!
+                    $SQL_Mail = 'SELECT C_CorreoE FROM cliente WHERE C_CorreoE = "$Email"';
+                    $MailResult = mysqli_query($connection, $SQL_Mail) or die(mysqli_error($connection));
+                    $Email_Registered = mysqli_num_rows($MailResult);
+                    if ($Email_Registered > 0) {
+                        echo "<div class='alert alert-danger' role='alert'>
+                        ERROR is already REGISTERED!
+                        </div>";
+                    } else{
+                        // Register NEW USER
+                        $SQL_Register = "INSERT INTO cliente (C_ID, C_CorreoE, C_UserName, C_Password, C_Key)
+                        VALUES ('', '$Email', '$Username', '$Password_Hashed', '$Key')";
+                        // INSERT INTO BD
+                        if (mysqli_query($connection, $SQL_Register)) {
+                            //echo "<div class='alert alert-success' role='alert'>
+                            //User Registered! Verify you're Email :D </div>";
+                            // Send EMAIL
+                            $to = $Email;
+                            $subject = "Email Verification from Oriol's Coffee";
+                            $message = "<a href='http://localhost:8080/CoffeeShop/verify.php?Key=$Key'>Verify Account</a>";
+                            $headers = "From: 2019011931@upb.edu.mx \r \n";
+                            $headers .= "MIME-Version: 1.0" . "\r\n";
+                            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                            // FUNCTION SEND MAIL
+                            mail($to, $subject, $message, $headers);
+                            // SEND TO PAGE THANKYOU
+                            header('location: menu.php');
+                        } else{
+                            echo 'ERROR D:';
+                        }
+                    }
+                }
+            //}
+        ?>
     </main>
 </body>
     <!-- FOOTER -->
