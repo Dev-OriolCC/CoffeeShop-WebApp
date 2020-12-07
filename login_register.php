@@ -5,6 +5,8 @@
     include_once 'css/footerStyle.css';
 
     $ERROR = NULL;
+    //SESION DE USUARIO
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +26,8 @@
             <div class="row">
                 <form method="POST" action="" class="bg-dark mx-auto col-8 col-sm-4 mt-5">
                     <div class="form-group">
-                        <p class="text-white">Email/Username: </p>
-                        <input type="text" class="form-control" name="Username" placeholder="Example@gmail.com" required>
+                        <p class="text-white">Email: </p>
+                        <input type="text" class="form-control" name="UserEmail" placeholder="Example@gmail.com" required>
                     </div> <!-- PASSWORD -->
                     <div class="form-group">
                         <p class="text-white">Password: </p>
@@ -40,6 +42,39 @@
         <div align="center">
             <h4 id="register" class="text-white">Register</h4>
         </div>
+        <?php   // CODE FOR LOGIN
+            if (isset($_POST['NewLogin'])) {
+                // Get the values from FORM
+                $Email = mysqli_real_escape_string($connection, $_POST['UserEmail']);
+                $Password = mysqli_real_escape_string($connection, $_POST['UserPassword']);
+                //
+
+                $SQL_Login = "SELECT C_ID, C_UserName, C_Password FROM cliente WHERE C_CorreoE='$Email'";
+                $UserResult = mysqli_query($connection, $SQL_Login);
+                $Result = mysqli_num_rows($UserResult);
+                if ($Result >0) {
+                    $User = mysqli_fetch_assoc($UserResult); //This
+                    $Hash = password_verify($Password, $User['C_Password']);
+
+                    if ($Hash) {
+                        // GET DATA FROM DB
+                        $_SESSION['id'] = $User['C_ID'];
+                        $_SESSION['userName'] = $User['C_UserName'];
+                        // Finally Redirect to Home (index.php)
+                        header('location: index.php');
+                    }else{
+                        echo 'ERROR HASH';
+                    }
+
+                }else {
+                    echo 'Fatal Error D:';
+                }
+
+
+            }
+
+
+        ?>
         <!-- END LOGIN -->
         <script> //Here a few of Javascript
             document.getElementById("register").onclick = function() {register2 ()};
@@ -50,6 +85,7 @@
                 document.getElementById("loginForm").style.display = "none"; //Yes
             }
         </script>
+
         <!-- REGISTER -->
         <div style="display: none;" id="registerUser">
             <div class="row">
@@ -80,7 +116,7 @@
             <h4 id="login" class="text-white" style="display: none;">Login</h4>
         </div>
         <script>
-
+            // Validate if passwords are not equal!
             var password = document.getElementById("password"), confirm_password = document.getElementById("password_2");
                 function validatePassword(){
                     if(password.value != confirm_password.value) {
@@ -102,7 +138,7 @@
         </script>
         <?php   // CODE FOR REGISTER
             if(isset($_POST['NewUser'])){
-                /*
+                /* Comment this for now!
                 $user_1 = $_POST['username'];
                 if (strlen($user_1 <= 8)) {
                     $ERROR = '<p>Username is too Short!!</p>';
@@ -131,20 +167,7 @@
                         VALUES ('', '$Email', '$Username', '$Password_Hashed', '$Key')";
                         // INSERT INTO BD
                         if (mysqli_query($connection, $SQL_Register)) {
-                            //echo "<div class='alert alert-success' role='alert'>
-                            //User Registered! Verify you're Email :D </div>";
-                            // Send EMAIL
-                            $to = $Email;
-                            $subject = "Email Verification from Oriol's Coffee";
-                            $message = "<a href='http://localhost:8080/CoffeeShop/verify.php?Key=$Key'>Verify Account</a>";
-                            $headers = "From: 2019011931@upb.edu.mx \r \n";
-                            $headers .= "MIME-Version: 1.0" . "\r\n";
-                            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-                            // FUNCTION SEND MAIL
-                            mail($to, $subject, $message, $headers);
-                            // SEND TO PAGE THANKYOU
-                            header('location: menu.php');
+                            echo "<p>User created, Now Login!🙂👍</p>";
                         } else{
                             echo 'ERROR D:';
                         }
