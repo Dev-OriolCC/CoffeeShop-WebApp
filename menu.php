@@ -28,16 +28,16 @@
         <div class="col-12 col-sm-3">            
             <form action="<?php $_SERVER['PHP_SELF']?>">
                 <p class="ml-2 mt-4">Type of Coffee</p>
-                <input type="checkbox" id="#" name="#" class="ml-3">
+                <input type="checkbox" id="coffee_1" name="#" class="ml-3">
                 <label for="coffee1">Cappuccino</label> <br>
-                <input type="checkbox" id="#" name="#" class="ml-3">
+                <input type="checkbox" id="coffee_2" name="#" class="ml-3">
                 <label for="coffee2">Latte</label> <br>
-                <input type="checkbox" id="#" name="#" class="ml-3">
+                <input type="checkbox" id="coffee_3" name="#" class="ml-3">
                 <label for="coffee3">Doppio</label> <br>
-                <input type="checkbox" id="#" name="#" class="ml-3">
+                <input type="checkbox" id="coffee_4" name="#" class="ml-3">
                 <label for="coffee4">American</label> <br>
                 <p class="ml-2">Discounts</p>
-                <input type="checkbox" id="#" name="#" class="ml-3">
+                <input type="checkbox" id="coffee_5" name="#" class="ml-3">
                 <label for="discount1">All discounts</label> <br>
             </form>
         </div>

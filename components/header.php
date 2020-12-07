@@ -36,13 +36,13 @@
         </li>
         <?php   }   ?>
         <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="profile.php">Profile</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Cart</a>
+            <a class="nav-link" href="cart.php">Cart</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Favorite</a>
+            <a class="nav-link" href="favorite.php">Favorite</a>
         </li>
     </ul>
   </div>
