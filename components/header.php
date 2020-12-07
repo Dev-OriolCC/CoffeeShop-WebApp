@@ -16,7 +16,7 @@
         <a class="nav-link" href="menu.php">Menu</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Orders</a>
+        <a class="nav-link" href="orders.php">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
@@ -28,11 +28,11 @@
     </form>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <?php
-        $id = '';
-            if ($id >0) {
+            if ($idUser == !null) {
         ?>
         <li class="nav-item">
-            <a class="nav-link" href="#">Welcome Oriol!</a>
+            <a class="nav-link" href="#">Welcome <i><?php echo $userName ?></i> !</a>
+            <a href="logout.php">Logout</a>
         </li>
         <?php   }   ?>
         <li class="nav-item">
