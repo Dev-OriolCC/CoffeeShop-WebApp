@@ -49,7 +49,7 @@
                 $Password = mysqli_real_escape_string($connection, $_POST['UserPassword']);
                 //
 
-                $SQL_Login = "SELECT C_ID, C_UserName, C_Password FROM cliente WHERE C_CorreoE='$Email'";
+                $SQL_Login = "SELECT * FROM cliente WHERE C_CorreoE='$Email'";
                 $UserResult = mysqli_query($connection, $SQL_Login);
                 $Result = mysqli_num_rows($UserResult);
                 if ($Result >0) {
@@ -59,7 +59,16 @@
                     if ($Hash) {
                         // GET DATA FROM DB
                         $_SESSION['id'] = $User['C_ID'];
+                        $_SESSION['name'] = $User['C_Nombre'];
+                        $_SESSION['lastName'] = $User['C_ApellidoP'];
+                        $_SESSION['finalName'] = $User['C_ApellidoM'];
+                        $_SESSION['email'] = $User['C_CorreoE'];
                         $_SESSION['userName'] = $User['C_UserName'];
+                        $_SESSION['address'] = $User['C_Direccion'];
+                        $_SESSION['gender'] = $User['C_Genero'];
+                        $_SESSION['phone'] = $User['C_Numero'];
+                        $_SESSION['referencia'] = $User['C_Referencia'];
+
                         // Finally Redirect to Home (index.php)
                         header('location: index.php');
                     }else{

@@ -50,13 +50,14 @@
                 <a href="#">
                     <div class="col-sm-4 mt-4">
                         <div class="thumb-wrapper bg-dark">
-                            <div class="img-box">
-                                <img src="#" class="img-responsive" alt="">
-                            </div>
                             <div class="thumb-content" align="center">
                                 <h4 >Coffee American</h4>
+                                    <div class="img-box">
+                                        <img src="img/latte.png" width="180" height="150" class="img-responsive" alt="">
+                                    </div>
                                 <p class="item-price">$89.00</p>
                                 <a href="#" class="btn btn-primary" >Add to Cart</a>
+                                <a href="#" class="btn btn-primary">Favorite</a>
                             </div>						
                         </div>
                     </div>

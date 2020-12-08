@@ -53,7 +53,7 @@ include_once 'sessionUser.php';
                 <div class="col-5 mx-auto">
                     <img src="https://thehalalinvestor.co.uk/wp-content/uploads/2020/07/man_5-512.png"
                     style="border: 2px solid black; border-radius: 50%;" width="150" height="150">
-                    <p><b>Walter Hartwell White</b> <br> -Founder of Oriol's Coffee</p>
+                    <p><b>Oriol Cortez Cesar</b> <br> -Founder of Oriol's Coffee</p>
                 </div>
                 </p>
             </div>
