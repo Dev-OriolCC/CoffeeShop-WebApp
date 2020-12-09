@@ -45,6 +45,10 @@
         <div class="col-12 col-sm-9">
             <div class="row">
                 <?php 
+                // Fetch total coffees from DB.
+                // Get the Array of DB and For Loop
+
+
                     for ($i=1; $i <=10 ; $i++) {
                 ?>
                 <a href="#">

@@ -25,5 +25,7 @@
 
 </body>
 
+    
+
     <?php include_once 'components/footer.php'; ?>
 </html>
