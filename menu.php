@@ -38,21 +38,16 @@
         <div class="col-12 col-sm-3">            
             <form method="post" action="<?php $_SERVER['PHP_SELF']?>">
                 <p class="ml-2 mt-4">Type of Coffee</p>
-                <div>
-                    <input type="checkbox" id="coffee_1" name="coffee_1" class="ml-3">
-                    <label for="coffee_1">Cappuccino</label> <br>
-                </div>
-                <input type="checkbox" id="coffee_2" name="#" class="ml-3">
-                <label for="coffee2">Latte</label> <br>
-                <input type="checkbox" id="coffee_3" name="#" class="ml-3">
-                <label for="coffee3">Doppio</label> <br>
-                <input type="checkbox" id="coffee_4" name="#" class="ml-3">
-                <label for="coffee4">American</label> <br>
-                <p class="ml-2">Discounts</p>
-                <input type="checkbox" id="coffee_5" name="#" class="ml-3">
-                <label for="discount1">All discounts</label> <br>
-                <div>
-                    <input type="submit" name="search">
+                <input type="checkbox" id="coffee_1" name="coffee_1" class="ml-3">
+                <label for="coffee_1">Cappuccino</label> <br>
+                <input type="checkbox" id="coffee_2" name="coffee_2" class="ml-3">
+                <label for="coffee_2">Latte</label> <br>
+                <input type="checkbox" id="coffee_3" name="coffee_3" class="ml-3">
+                <label for="coffee_3">Doppio</label> <br>
+                <input type="checkbox" id="coffee_4" name="coffee_4" class="ml-3">
+                <label for="coffee_4">American</label> <br>
+                <div align="center">
+                    <input type="submit" value="Search" name="search" class="btn btn-success">
                 </div>
 
             </form>
@@ -62,6 +57,12 @@
             if(isset($_POST['search'])){
                 if(isset($_POST['coffee_1'])) {
                     $SQL_Prod = 'SELECT * FROM producto WHERE Prod_Categoria = 300';
+                }elseif (isset($_POST['coffee_2'])) {
+                    $SQL_Prod = 'SELECT * FROM producto WHERE Prod_Categoria = 200';
+                }elseif (isset($_POST['coffee_3'])) {
+                    $SQL_Prod = 'SELECT * FROM producto WHERE Prod_Categoria = 400';
+                }elseif (isset($_POST['coffee_4'])) {
+                    $SQL_Prod = 'SELECT * FROM producto WHERE Prod_Categoria = 100';
                 }
                 $dataProduct = CoffeeData($SQL_Prod, $connection);
                 $totalProd = count($dataProduct);
