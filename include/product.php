@@ -15,7 +15,6 @@
             }
             return $dataProduct;
         }
-        
     }
 
     //print_r($dataProduct);
