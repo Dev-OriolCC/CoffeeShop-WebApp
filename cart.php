@@ -3,6 +3,10 @@
     // Session
     session_start();
     include_once 'sessionUser.php';
+    //
+    include_once 'include/product.php';
+    require_once('include/connect.php');
+
 
     if ($idUser == null) {
         header('location: login_register.php');
@@ -24,28 +28,33 @@
         <div class="bg-success col-7 col-sm-4" align="center">
             <p><?php echo $userName; ?> Coffee Cart</p>
         </div>
-        <table>
+        <table class="bg-dark text-white">
             <?php 
-                $userCart = 1;
-                if ($userCart >0) { 
+                $SQL_SearchCart = "SELECT * FROM carrito 
+                INNER JOIN producto ON carrito.Producto_ID = producto.Prod_ID
+                WHERE Cliente_ID = $idUser";
+
+                $cartUser = CoffeeData($SQL_SearchCart, $connection);
+                if ($cartUser == true) { 
+                    $numCart = count($cartUser);
+                    for ($i=0; $i <$numCart; $i++) { 
             ?>
                 <tr>
-                    <div class="row">
-                        <td class="bg-dark px-3"><img src="img/latte.png" width="60" height="60"></td>
-                        <td class="bg-dark text-white px-5">Latte</td>
-                        <td class="bg-dark text-white px-5"><button style="border-radius: 5px;" class="btn-danger">Delete</button></td>
-                    </div>
+                    <td class="px-3"><img src="<?php echo $cartUser[$i]['Prod_Imagen1']; ?>" width="60" height="60"></td>
+                    <td class="px-5"><?php echo $cartUser[$i]['Prod_Nombre']; ?></td>
+                    <td class="px-5"><a href="coffeeDeleted.php?id=<?php echo $cartUser[$i]['Car_ID']; ?>&page=cart" target="_blank" type="submit" name="<?php echo 'cart'.$i; ?>" class="btn">Delete</a></td>
                 </tr>
-            <?php } else{
+            <?php
+                }  // END FOR  
+        } else{
                 echo "<tr><td>No Coffees Here!</td></tr>";
-
             }
             ?>
         </table> 
     </div><!-- END OF CLIENT CART -->
     <div align="center"> <!-- SECTION FOR BUTTONS-- STORE VARIABLE FROM SQL TEST-->
         <?php
-            if ($userCart >0) {
+            if ($cartUser == true) {
         ?>
         <button class="btn btn-success">Order Now</button>
         <?php
