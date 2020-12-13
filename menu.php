@@ -86,7 +86,7 @@
                                 <p class="item-price" style="color: green;"><strong>$<?php echo $dataProduct[$i]['Prod_Precio'] ?>.00</strong></p>
                                 <div align="center">
                                     <a href="cartAdded.php?id=<?php echo $dataProduct[$i]['Prod_ID']; ?>" target="_blank" type="submit" name="<?php echo 'prodCart'.$i;?>" class="btn btn-success" >Add to Cart</a>
-                                    <a href="#" class="btn btn-success">Favorite</a>
+                                    <a href="favAdded.php?id=<?php echo $dataProduct[$i]['Prod_ID']; ?>" target="_blank" type="submit" name="<?php echo 'prodFav'.$i; ?>" class="btn btn-success">Favorite</a>
                                 </div>
                             </div>						
                         </div>

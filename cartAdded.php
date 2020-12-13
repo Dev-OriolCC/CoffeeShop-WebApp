@@ -36,9 +36,10 @@
                         header('location: index.php');
                     }
                     
+
                     // INSERT INTO CART
-                    $SQL_Cart = "INSERT INTO carrito (Car_ID, productos) VALUES (0,'$ID')";
-                    $resultCart = mysqli_query($connection, $SQL_Cart) or die(mysqli_error($connection));
+                    $SQL_Insert = "INSERT INTO carrito (Car_ID, Cliente_ID, Producto_ID) VALUES ('', $idUser, $ID)";
+                    
 
                 ?>
                 <p class="text-white"><span class="text-success"><?php echo $data[1]; ?> Coffee</span> is now in you're Cart!</p>

@@ -10,7 +10,7 @@
     if ($idUser == null) {
         header('location: login_register.php');
     }else{
-        $SQL_User = "SELECT C_Nombre, C_ApellidoP, C_ApellidoM, C_CorreoE, C_UserName, C_Direccion, C_Genero, C_Numero FROM cliente WHERE C_ID = '$idUser'";
+        $SQL_User = "SELECT C_Nombre, C_ApellidoP, C_ApellidoM, C_CorreoE, C_UserName, C_Direccion, C_Genero, C_Numero, C_FechaCreacion FROM cliente WHERE C_ID = '$idUser'";
         $resultUser = mysqli_query($connection, $SQL_User) or die(mysqli_error($connection));
         $numberUser = mysqli_num_rows($resultUser);
         // Store the data in the Array
@@ -35,6 +35,7 @@
             <div class="col-4" align="center">
                 <img src="img/express.png" height="60px" width="60px">
                 <p><?php echo $dataUser[4]; ?></p>
+                <p>Created: <?php echo $dataUser[8]; ?></p>
             </div>
             <div class="col-8">
                 <form action="" method="post">
