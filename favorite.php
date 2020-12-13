@@ -48,7 +48,7 @@
                     <td class=" px-3"><img src="<?php echo $favUser[$i]['Prod_Imagen1']; ?>" width="60" height="60"></td>
                     <td class=" px-5"><?php echo $favUser[$i]['Prod_Nombre']; ?></td>
                     <!-- CREATE DELETE PAGE AND CONDITION FOR PAGE VARIABLE FROM LINK -->
-                    <td class=" px-5"><a href="coffeeDeleted?id=<?php echo $favUser[$i]['Fav_ID'];?>?page=fav" target="_blank" type="submit" name="<?php echo 'fav'.$i; ?>" class="btn">Delete</a></td>
+                    <td class=" px-5"><a href="coffeeDeleted.php?id=<?php echo $favUser[$i]['Fav_ID']; ?>&page=fav" target="_blank" type="submit" name="<?php echo 'fav'.$i; ?>" class="btn">Delete</a></td>
                     <td class=" px-5"><a href="cartAdded.php?id=<?php echo $favUser[$i]['Prod_ID']; ?>" target="_blank" type="submit" name="<?php echo 'prodCart'.$i;?>" class="btn">Add to Cart</a></td>
                     <td class=" px-5"><button class="btn" data-toggle="modal" data-target="<?php echo '#prodModal'.$i; ?>">View</button></td>
                 </tr>

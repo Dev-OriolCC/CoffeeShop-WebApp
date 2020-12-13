@@ -2,7 +2,6 @@
     require_once 'include/connect.php';
     // Connect to Database and Style Sheet's
     include_once 'include/bootstrapLinks.php';
-    include_once 'css/footerStyle.css';
 
     $ERROR = NULL;
     //SESION DE USUARIO

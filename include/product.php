@@ -16,8 +16,14 @@
             return $dataProduct;
         }
     }
-
     //print_r($dataProduct);
-   
-
+?>
+<?php
+function DeleteMSG(){
+?>
+    <h3 class="text-white">Coffee added Successfully!</h3><br>
+    <img src="img/coffeeSad.png" alt="cartPNG" width="180px" height="180px">
+    <p class="text-white">Coffee has been deleted 😐</p>
+<?php        
+    }
 ?>
