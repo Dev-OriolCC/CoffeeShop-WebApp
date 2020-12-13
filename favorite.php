@@ -1,9 +1,11 @@
 <?php
     include_once 'include/bootstrapLinks.php';
-    include_once 'css/footerStyle.css';
     // Session
     session_start();
     include_once 'sessionUser.php';
+    // Use function fetch data
+    include_once 'include/product.php';
+    require_once('include/connect.php');
 
     if ($idUser == null) {
         header('location: login_register.php');
@@ -26,21 +28,58 @@
         <div class="bg-success col-7 col-sm-4" align="center">
             <p><?php echo $userName; ?> Favorite List</p>
         </div>
-        <table>
-            <?php 
-                $userFavorite = 0;
-                if ($userFavorite >0) { 
+        <table class="bg-dark text-white">
+            <?php
+                $SQL_Search = "SELECT * FROM favorito 
+                INNER JOIN producto ON favorito.Producto_ID = producto.Prod_ID 
+                WHERE Cliente_ID = $idUser";
+                $favUser = CoffeeData($SQL_Search, $connection);
+
+                print_r($favUser);
+                // Get the total Fav Number
+                $userFavorite = count($favUser);
+                if ($userFavorite >0) {
+                    for ($i=0; $i <$userFavorite; $i++) { 
             ?>
                 <tr>
-                    <div class="row">
-                        <td class="bg-dark px-3"><img src="img/latte.png" width="60" height="60"></td>
-                        <td class="bg-dark text-white px-5">Latte</td>
-                        <td class="bg-dark text-white px-5"><button style="border-radius: 5px;" class="btn-danger">Delete</button></td>
-                        <td class="bg-dark text-white px-5"><button style="border-radius: 5px;" class="btn-danger">Add Cart</button></td>
-                        <td class="bg-dark text-white px-5"><button style="border-radius: 5px;" class="btn-danger">View</button></td>
-                    </div>
+                    <td class=" px-3"><img src="<?php echo $favUser[$i]['Prod_Imagen1']; ?>" width="60" height="60"></td>
+                    <td class=" px-5"><?php echo $favUser[$i]['Prod_Nombre']; ?></td>
+                    <td class=" px-5"><button class="btn" type="submit" name="delete">Delete</button></td>
+                    <td class=" px-5"><button class="btn">Add Cart</button></td>
+                    <td class=" px-5"><button class="btn" data-toggle="modal" data-target="<?php echo '#prodModal'.$i; ?>">View</button></td>
                 </tr>
-            <?php } else{
+                <?php 
+                    // INSERT & DELETE BUTTON CODE 
+                
+                ?>
+                <!-- Modal Window -->
+                <div class="modal fade" id="<?php echo 'prodModal'.$i; ?>" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><?php echo $favUser[$i]['Prod_Nombre']; ?> Coffee 🙂☕</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div align="center">
+                                    <h5>Information</h5>
+                                </div>
+                                <p class="modal-sub">Price: <span class="text-dark">$<?php echo $favUser[$i]['Prod_Precio']; ?>.00</span></p>
+                                <p class="modal-sub">Code: <span class="text-dark"><?php echo $favUser[$i]['Prod_Codigo']; ?></span></p>
+                                <p class="modal-sub">Specs: <span class="text-dark"><?php echo $favUser[$i]['Prod_Carac']; ?></span></p>
+                                <p class="modal-sub">Size: <span class="text-dark"><?php echo $favUser[$i]['Prod_Size']; ?> ml</span></p>
+                                <p class="modal-sub">Image Two</p>
+                                <p class="modal-sub">Image Three</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php 
+                    }
+                } else{
                 echo "<tr><td>No Coffees found 😓😔!</td></tr>";
             }
             ?>

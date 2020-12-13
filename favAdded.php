@@ -36,6 +36,8 @@
                     header('location: index.php');
                 }
                  // INSERT INTO FAV
+                 $SQL_InsertFav = "INSERT INTO favorito (Fav_ID, Cliente_ID, Producto_ID) VALUES ('', $idUser, '$ID')";
+                 $insertResult= mysqli_query($connection, $SQL_InsertFav) or die(mysqli_error($connection));
                     
                 ?>
                 <p class="text-white"><span class="text-success"><?php echo $data[1]; ?> Coffee</span> is now in you're Favourite List💗!</p>

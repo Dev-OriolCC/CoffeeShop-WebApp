@@ -39,8 +39,7 @@
 
                     // INSERT INTO CART
                     $SQL_Insert = "INSERT INTO carrito (Car_ID, Cliente_ID, Producto_ID) VALUES ('', $idUser, $ID)";
-                    
-
+                    $insertResult = mysqli_query($connection, $SQL_Insert) or die(mysqli_error($connection));
                 ?>
                 <p class="text-white"><span class="text-success"><?php echo $data[1]; ?> Coffee</span> is now in you're Cart!</p>
                 <img src="img/coffeeHap.png" alt="coffeeHappy" width="150px" height="150px">
