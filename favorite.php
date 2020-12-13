@@ -30,28 +30,28 @@
         </div>
         <table class="bg-dark text-white">
             <?php
+
                 $SQL_Search = "SELECT * FROM favorito 
                 INNER JOIN producto ON favorito.Producto_ID = producto.Prod_ID 
                 WHERE Cliente_ID = $idUser";
                 $favUser = CoffeeData($SQL_Search, $connection);
 
-                print_r($favUser);
+                // PRINT ARRRAY FOR HELP
+                //print_r($favUser);
                 // Get the total Fav Number
-                $userFavorite = count($favUser);
-                if ($userFavorite >0) {
+                
+                if ($favUser == true) {
+                    $userFavorite = count($favUser);
                     for ($i=0; $i <$userFavorite; $i++) { 
             ?>
                 <tr>
                     <td class=" px-3"><img src="<?php echo $favUser[$i]['Prod_Imagen1']; ?>" width="60" height="60"></td>
                     <td class=" px-5"><?php echo $favUser[$i]['Prod_Nombre']; ?></td>
-                    <td class=" px-5"><button class="btn" type="submit" name="delete">Delete</button></td>
-                    <td class=" px-5"><button class="btn">Add Cart</button></td>
+                    <!-- CREATE DELETE PAGE AND CONDITION FOR PAGE VARIABLE FROM LINK -->
+                    <td class=" px-5"><a href="coffeeDeleted?id=<?php echo $favUser[$i]['Fav_ID'];?>?page=fav" target="_blank" type="submit" name="<?php echo 'fav'.$i; ?>" class="btn">Delete</a></td>
+                    <td class=" px-5"><a href="cartAdded.php?id=<?php echo $favUser[$i]['Prod_ID']; ?>" target="_blank" type="submit" name="<?php echo 'prodCart'.$i;?>" class="btn">Add to Cart</a></td>
                     <td class=" px-5"><button class="btn" data-toggle="modal" data-target="<?php echo '#prodModal'.$i; ?>">View</button></td>
                 </tr>
-                <?php 
-                    // INSERT & DELETE BUTTON CODE 
-                
-                ?>
                 <!-- Modal Window -->
                 <div class="modal fade" id="<?php echo 'prodModal'.$i; ?>" role="dialog">
                     <div class="modal-dialog">
@@ -78,16 +78,16 @@
                     </div>
                 </div>
             <?php 
-                    }
+                    } //END FOR 
                 } else{
-                echo "<tr><td>No Coffees found 😓😔!</td></tr>";
-            }
+                    echo "<tr><td>No Coffees found 😓😔!</td></tr>";
+                }
             ?>
         </table> 
     </div><!-- END OF CLIENT CART -->
     <div align="center" class="mt-2 mb-2"> <!-- SECTION FOR BUTTONS-- STORE VARIABLE FROM SQL TEST-->
         <?php
-            if ($userFavorite == 0) {
+            if ($favUser == false) {
         ?>
             <button class="btn btn-success" onclick="location.href='menu.php'">Search for Coffees</button>
         <?php

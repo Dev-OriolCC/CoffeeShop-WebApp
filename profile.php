@@ -2,7 +2,6 @@
     require_once 'include/connect.php';
 
     include_once 'include/bootstrapLinks.php';
-    include_once 'css/footerStyle.css';
     // Session
     session_start();
     include_once 'sessionUser.php';
