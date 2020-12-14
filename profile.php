@@ -37,7 +37,7 @@
                 <p>Created: <?php echo $dataUser[8]; ?></p>
             </div>
             <div class="col-8">
-                <form action="" method="post">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <div class="form-group"><!--NAME -->
                         <p class="text-black">First Name:</p>
                         <input type="text" class="col-10 col-sm-6 "class="form-control" name="Name" value="<?php echo $dataUser[0]; ?>">
@@ -71,7 +71,7 @@
                         <input type="text" class="col-10 col-sm-6 "class="form-control" name="Phone" value="<?php echo $dataUser[7]; ?>">
                     </div>
                     <!-- BUTTON -->
-                    <button class="mt-3 btn btn-success" name="UpdateUser">Update Info</button>
+                    <button class="mt-3 btn btn-success" type="submit" name="UpdateUser">Update Info</button>
                 </form>
                 <?php 
                     if (isset($_POST['UpdateUser'])) {
@@ -90,7 +90,6 @@
                         WHERE C_ID = '$idUser' ";
                         $Update = mysqli_query($connection, $SQL_Update);
                     }
-                
                 ?>
             </div>
         </div><!-- ROW -->
