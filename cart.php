@@ -90,15 +90,22 @@
             $phone = $UserArray[0]['C_Numero'];
             
             if ($name !== '' && $lastName !== '' && $finalName !== '' && $address !== '' &&  $phone !== '' ) {
-                $date = date('c');
-                $ID = $cartUser[0]['Prod_ID'];//
-                // CREATE FOR LOOP TO INSERT THE PRODUCTS IN NEW TABLE WITH ID OF ORDER 
-                // TO HAVE A BACKUP
-
-                $SQL_Order = "INSERT INTO orden (Orden_ID, Orden_Pago, Orden_Total, Orden_Cliente, Orden_Fecha)
-                VALUES ('', 'Cash Delivered', $totalPrice, $idUser, '')
-                ";
+                $SQL_Order = "INSERT INTO orden (Orden_ID, Orden_Total, Orden_Cliente)
+                VALUES ('', $totalPrice, $idUser)";
                 $Result = mysqli_query($connection, $SQL_Order) or die(mysqli_error($connection));
+                // Get the Order ID
+                $SQL = "SELECT * FROM orden WHERE Orden_Cliente = $idUser ORDER BY Orden_ID DESC LIMIT 1";
+                $orderData = CoffeeData($SQL, $connection);
+                $orderID = $orderData[0]['Orden_ID']; // Store ID in Variable
+                // Insert into new Table with the product's ID
+                for ($i=0; $i <$numCart; $i++) { 
+                    $prodID = $cartUser[$i]['Prod_ID']; // get the ID of Product
+                    // SQL and INSERT DYNAMIC
+                    $SQL_CartProd = "INSERT INTO ordentable (Orden_ID, Orden, Producto_ID, Cliente_ID)
+                    VALUES ('', $orderID, $prodID , $idUser) ";
+                    mysqli_query($connection, $SQL_CartProd) or die(mysqli_error($connection));
+                }
+                // AFTER THE SUCCESSFULL INSERT WE CLEAN THE CART
                 if ($Result == true) {
                     $SQL_CleanCart = "DELETE FROM carrito WHERE Cliente_ID = $idUser";
                     mysqli_query($connection, $SQL_CleanCart) or die(mysqli_error($connection));
