@@ -123,7 +123,7 @@
             <?php
             }else{
             ?>  <div align="center">
-                    <p>Please fill all fields to release this order 😉☕.</p>
+                    <p>Please fill all Profile fields to release this order 😉☕.</p>
                     <button class="btn" onclick="window.location.href='profile.php'">Profile</button>
                 </div>
             <?php
