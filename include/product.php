@@ -16,9 +16,9 @@
     //print_r($dataProduct);
 function DeleteMSG(){
 ?>
-    <h3 class="text-white">Coffee Deleted Successfully!</h3><br>
+    <h3 class="text-dark">Coffee Deleted Successfully!</h3><br>
     <img src="img/coffeeSad.png" alt="cartPNG" width="180px" height="180px">
-    <p class="text-white">Coffee has been deleted 😐</p>
+    <p class="text-dark">Coffee has been deleted 😐</p>
 <?php        
     }
 ?>

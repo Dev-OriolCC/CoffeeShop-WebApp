@@ -30,7 +30,7 @@
             <div class="text-dark col-7 col-sm-12" align="center">
                 <h4><?php echo $userName; ?>'s Coffee Cart</h4>
             </div>
-            <table class="bg-dark text-white">
+            <table class="bg-dark text-white" id="tabField">
                 <?php 
                     $SQL_SearchCart = "SELECT * FROM carrito 
                     INNER JOIN producto ON carrito.Producto_ID = producto.Prod_ID
@@ -47,9 +47,30 @@
                         <td class="px-3"><img src="<?php echo $cartUser[$i]['Prod_Imagen1']; ?>" style="width: 60px; height:60px;"></td>
                         <td class="px-5"><?php echo $cartUser[$i]['Prod_Nombre']; ?></td>
                         <td class="px-5">$<?php echo $cartUser[$i]['Prod_Precio']; ?>.00</td>
-                        <td class="px-5"><a href="coffeeDeleted.php?id=<?php echo $cartUser[$i]['Car_ID']; ?>&page=cart" target="_blank" type="submit" name="<?php echo 'cart'.$i; ?>" class="btn">Delete</a></td>
+                        <form action="?<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                            <td class="px-5"><button href="coffeeDeleted.php?id=<?php echo $cartUser[$i]['Car_ID']; ?>&page=cart" type="submit" name="<?php echo 'cart'.$i; ?>" class="btn">Delete</button></td>                    
+                        </form>
                     </tr>
                 <?php
+                    // DELETE COFFEE
+                    if (isset($_POST['cart'.$i])) {
+                        $tabID = $cartUser[$i]['Car_ID'];
+                        if ($idUser != null && $tabID != null) {
+                            $SQL_Delete = "DELETE FROM carrito WHERE Car_ID = $tabID AND Cliente_ID = $idUser";
+                            $result = mysqli_query($connection, $SQL_Delete) or die(mysqli_error($connection));
+                ?>
+                        <script>
+                            document.getElementById("tabField").style.display = "none";
+                            document.getElementById("checkField").style.display = "none";
+                        </script>
+                <?php
+                            DeleteMSG();
+                        }else{
+                            echo 'ERROR ON DELETE';
+                        }
+                    } //end if delete
+
+
                     }  // END FOR  
             } else{
                     echo "<tr><td>No Coffees Here!</td></tr>";
@@ -57,7 +78,7 @@
                 ?>
             </table><br> 
         </div><!-- END OF CLIENT CART -->
-        <div align="left" class="col-12 col-sm-4 bg-light"> <!-- SECTION FOR BUTTONS-- STORE VARIABLE FROM SQL TEST-->
+        <div align="left" class="col-12 col-sm-4 bg-light" id="checkField"> <!-- SECTION FOR BUTTONS-- STORE VARIABLE FROM SQL TEST-->
             <?php
                 if ($cartUser == true) {
             ?><br>

@@ -216,7 +216,7 @@
     }
 </style>
 
-<footer id="footer" class="footer-1">
+<footer id="footer" class="footer-1" >
     <div class="main-footer widgets-dark typo-light">
         <div class="container">
             <div class="row">

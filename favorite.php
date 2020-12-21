@@ -28,7 +28,7 @@
         <div class="bg-success col-7 col-sm-4" align="center">
             <p><?php echo $userName; ?> Favorite List</p>
         </div>
-        <table class="bg-dark text-white">
+        <table class="bg-dark text-white" id="content">
             <?php
 
                 $SQL_Search = "SELECT * FROM favorito 
@@ -43,12 +43,16 @@
                 if ($favUser == true) {
                     $userFavorite = count($favUser);
                     for ($i=0; $i <$userFavorite; $i++) { 
+
             ?>
                 <tr>
                     <td class=" px-3"><img src="<?php echo $favUser[$i]['Prod_Imagen1']; ?>" width="60" height="60"></td>
                     <td class=" px-5"><?php echo $favUser[$i]['Prod_Nombre']; ?></td>
                     <!-- CREATE DELETE PAGE AND CONDITION FOR PAGE VARIABLE FROM LINK -->
-                    <td class=" px-5"><a href="coffeeDeleted.php?id=<?php echo $favUser[$i]['Fav_ID']; ?>&page=fav" target="_blank" type="submit" name="<?php echo 'fav'.$i; ?>" class="btn">Delete</a></td>
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                        <td class=" px-5"><button type="submit" name="<?php echo 'fav'.$i; ?>" class="btn">Delete</button></td>
+                    </form>
+
                     <td class=" px-5"><a href="cartAdded.php?id=<?php echo $favUser[$i]['Prod_ID']; ?>" target="_blank" type="submit" name="<?php echo 'prodCart'.$i;?>" class="btn">Add to Cart</a></td>
                     <td class=" px-5"><button class="btn" data-toggle="modal" data-target="<?php echo '#prodModal'.$i; ?>">View</button></td>
                 </tr>
@@ -77,11 +81,31 @@
                         </div>
                     </div>
                 </div>
-            <?php 
+            <?php // DELETE COFFEE
+                if (isset($_POST['fav'.$i])) {
+                    $tabID = $favUser[$i]['Fav_ID'];
+                    if ($idUser != null && $tabID != null) {
+                        $SQL_Delete = "DELETE FROM favorito WHERE Fav_ID = $tabID AND Cliente_ID = $idUser";
+                        $result = mysqli_query($connection, $SQL_Delete) or die(mysqli_error($connection));
+            ?>
+                    <script>
+                        document.getElementById("content").style.display = "none";
+                    </script>
+            <?php
+                        DeleteMSG();
+                    }else{
+                        echo 'ERROR ON DELETE';
+                    }
+                }
+
                     } //END FOR 
                 } else{
                     echo "<tr><td>No Coffees found 😓😔!</td></tr>";
                 }
+
+                // DELETE COFFEE
+                
+
             ?>
         </table> 
     </div><!-- END OF CLIENT CART -->

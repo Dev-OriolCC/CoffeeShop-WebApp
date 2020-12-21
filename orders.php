@@ -120,6 +120,8 @@
                 </div>
             <?php
                     } // END FOR
+                }else{
+                    echo "No orders Here! 😓";
                 }
             ?>
         </table>
@@ -127,8 +129,5 @@
     </div><br><br>
 
 </body>
-
-    
-
     <?php include_once 'components/footer.php'; ?>
 </html>

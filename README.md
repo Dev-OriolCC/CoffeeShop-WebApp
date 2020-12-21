@@ -9,6 +9,6 @@ This application will have functionality from the client side and admin.
 
 ## Authors ✒️
 
-* **Oriol Cortez Cesar** - *Full work* - [Dev-OriolCC](https://github.com/Dev-OriolCC)
+* **Oriol Cortez Cesar** - *Full work* - [Dev-OriolCC](https://github.com/Dev-OriolCC)git 
 
 ## Screenshots and gifs 📸
