@@ -69,35 +69,6 @@
 
 
             }
-            /*
-            if(isset($_POST['NewUser'])){
-                    // Securtiy
-                    $uName = mysqli_real_escape_string($connection, $_POST['Username']);
-                    $uPassword = mysqli_real_escape_string($connection, $_POST['UserPassword']);
-
-                    //Hash Password Security GOD Level
-                    $Password_Hashed = password_hash($uPassword, PASSWORD_BCRYPT);
-                    // Verify if not registered already!
-                    $SQL_Mail = "SELECT * FROM admin WHERE A_User='$uName'";
-                    $MailResult = mysqli_query($connection, $SQL_Mail) or die(mysqli_error($connection));
-                    $Email_Registered = mysqli_num_rows($MailResult);
-                    if ($Email_Registered > 0) {
-                        echo "<div class='alert alert-danger' role='alert'>
-                        ERROR is already REGISTERED!
-                        </div>";
-                    } else{
-                        // Register NEW USER
-                        $SQL_Register = "INSERT INTO admin (A_ID, A_User, A_Password)
-                        VALUES ('', '$uName', '$Password_Hashed')";
-                        // INSERT INTO BD
-                        if (mysqli_query($connection, $SQL_Register)) {
-                            echo "<p>User created, Now Login!🙂👍</p>";
-                        } else{
-                            echo 'ERROR D:';
-                        }
-                    }
-                }
-            */
         ?>
         </div>
     </main>

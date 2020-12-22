@@ -63,15 +63,11 @@
                     VALUES ('$name', $category, $price, '$code', '$details', '$size', '$image')";
                     // INSERT
                     $createResult = mysqli_query($connection, $SQL_2);
-                    if($createResult == true){
-                        echo 'GOOD';// MSG
-                    }else{
-                        echo 'SAD :(' ;
-                    }
+                    ValidateMSG($createResult);
                     
                 }
             ?>
-            <table class="bg-secondary text-white">
+            <table class="bg-secondary text-white" id="coffeeTab">
                 <?php 
                     $SQL_Prod = "SELECT * FROM producto";
                     $dataProd = CoffeeData($SQL_Prod, $connection);
@@ -92,7 +88,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Delete Coffee</h4>
+                                            <h4 class="modal-title text-danger">Delete Coffee</h4>
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
                                         <div class="modal-body">
@@ -117,7 +113,12 @@
                                 if ($idUser != null && $prodID != null) {
                                     $SQL_Delete = "DELETE FROM producto WHERE Prod_ID = $prodID ";
                                     $result = mysqli_query($connection, $SQL_Delete) or die(mysqli_error($connection));
-                                    //MSG
+                                ?>
+                                    <script>
+                                        document.getElementById('coffeeTab').style.display = "none";
+                                    </script>
+                                <?php
+                                    ValidateMSG($result);
                                 }
                             } // END DELETE BTN
                             // UPDATE COFFEE
@@ -182,7 +183,12 @@
                                 $SQL_Update = "UPDATE producto SET Prod_Nombre = '$name', Prod_Categoria = '$category', Prod_Precio = '$price',
                                 Prod_Codigo = '$code', Prod_Size = '$size', Prod_Imagen1 = '$image' WHERE Prod_ID = '$prodID'";
                                 $uResult = mysqli_query($connection, $SQL_Update);
-                                //MSG
+                            ?>
+                            <script>
+                                document.getElementById('coffeeTab').style.display = "none";
+                            </script>
+                            <?php
+                                ValidateMSG($uResult);
                             }
                         } // END FOR
                     }
