@@ -28,16 +28,15 @@ if ($idUser == null) {
             <h2 class="text-white">Welcome back <?php echo $userName; ?> 😃!</h2>
         </div>
         <!-- CREATE - DELETE - EDIT  = PRODUCT -->
-        <?php require_once 'admin/coffeeCrud.php' ?>
-
+        <?php require_once 'admin/coffeeCrud.php'; ?>
+        <br><br>
         <!-- CREATE - DELETE - EDIT  = USER -->
-        
-        
+        <?php require_once 'admin/userCrud.php'; ?>
+
         <!-- CREATE ADMIN -->
 
 
-        
-        <div class="col-12" align="center">
+        <div class="col-12 mt-5" align="center">
             <a href="logout.php" class="btn btn-success">LOGOUT</a>
         </div>
     </div>
