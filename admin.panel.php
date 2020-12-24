@@ -40,7 +40,7 @@ if ($idUser == null) {
         <!-- ORDERS SHIPPED -->
 
         <!-- ORDERS PROCCESS -->
-
+        <?php require_once 'admin/orderProcess.php'; ?>
 
         <div class="col-12 mt-5" align="center">
             <a href="logout.php" class="btn btn-success">LOGOUT</a>
